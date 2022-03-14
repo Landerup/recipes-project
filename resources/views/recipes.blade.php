@@ -43,7 +43,7 @@
                 <div class="col my-3 bg-danger">Instructions
                     <div class="my-2 bg-success">
                         <ol>
-                            <li></li>
+                            <li>Test</li>
                             <li></li>
                             <li></li>
                             <li></li>
