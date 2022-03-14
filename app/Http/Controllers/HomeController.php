@@ -23,10 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         return view('profile');
-=======
-        return view('recipes');
->>>>>>> add-recipes
     }
 }
