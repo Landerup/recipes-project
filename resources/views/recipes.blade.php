@@ -1,28 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+
+@auth
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 shadow border border-success rounded">
             <div class="">
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    @auth
                         <p class="text-center">{{ auth()->user()->name }}</p>
-                        <button class="btn btn-primary">Edit</button>
-                    @endauth
+                        <button class="btn btn-primary">Edita</button>
+
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endauth
+
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-4 mx-3">
