@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/recipes', [App\Http\Controllers\HomeController::class, 'index'])->name('recipes');
+Route::get('/recipes', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipes');
