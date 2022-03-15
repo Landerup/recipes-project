@@ -17,6 +17,7 @@ class CreateRecipeTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('pic');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
