@@ -23,7 +23,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-recipe');
     }
 
     /**
