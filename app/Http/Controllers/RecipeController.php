@@ -34,7 +34,17 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Recipe;
+
+        $post->title = request('title');
+
+        $post->content = request('content');
+
+        $post->user_id = Auth::user()->id;
+
+        $post->save();
+
+        return redirect('/posts');
     }
 
     /**
