@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Recipe;
+use Auth;
 
 class RecipeController extends Controller
 {
@@ -38,13 +40,13 @@ class RecipeController extends Controller
 
         $post->title = request('title');
 
-        $post->content = request('content');
+        $post->content = request('addPic');
 
         $post->user_id = Auth::user()->id;
 
         $post->save();
 
-        return redirect('/posts');
+        return redirect('/profile');
     }
 
     /**
