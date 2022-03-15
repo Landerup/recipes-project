@@ -15,7 +15,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        return view('recipes');
     }
 
     /**
@@ -40,13 +40,13 @@ class RecipeController extends Controller
 
         $recipe->title = request('title');
 
-        $recipe->content = request('addPic');
+        $recipe->pic = request('addPic');
 
         $recipe->user_id = Auth::user()->id;
 
         $recipe->save();
 
-        return redirect('/profile');
+        return redirect('/recipes');
     }
 
     /**

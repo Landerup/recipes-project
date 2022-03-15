@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container">
-        <form action="#" method="post">
+        <form action="{{ route('recipe.store') }}" method="post">
+            @CSRF
           <div class="form-group col-4">
             <label for="title">Title</label>
             <input type="text" class="form-control my-2" placeholder="Write here" name="title">
