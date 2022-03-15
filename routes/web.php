@@ -24,3 +24,9 @@ Auth::routes();
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'index'])->name('profile');
 
 Route::get('/recipes', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipes');
+<<<<<<< HEAD
+=======
+
+
+Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
+>>>>>>> add-recipes

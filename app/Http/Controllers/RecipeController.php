@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Recipe;
+use Auth;
 
 class RecipeController extends Controller
 {
@@ -23,7 +25,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        return view('add-recipe');
     }
 
     /**
@@ -34,7 +36,17 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recipe = new Recipe;
+
+        $recipe->title = request('title');
+
+        $recipe->pic = request('addPic');
+
+        $recipe->user_id = Auth::user()->id;
+
+        $recipe->save();
+
+        return redirect('/recipes');
     }
 
     /**
