@@ -17,7 +17,7 @@ class CreateInstructionsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('instruction');
-            $table->foreignId('recipe_id')->references('id')->on('recipe');
+            $table->foreignId('recipe_id')->references('id')->on('recipes');
         });
     }
 
