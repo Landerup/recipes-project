@@ -19,6 +19,7 @@ class CreateRecipesTable extends Migration
             $table->string('pic');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->string('cooking_time');
         });
     }
 
