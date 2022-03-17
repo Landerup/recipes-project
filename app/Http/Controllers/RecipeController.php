@@ -15,8 +15,12 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('recipes');
+    {       
+        $recipes = Recipe::latest()->get();    
+                return view('homepage',
+            [
+                'recipes' => $recipes
+            ]);
     }
 
     /**
