@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\models\Recipe;
+use App\models\Instruction;
 use Auth;
 
 class RecipeController extends Controller
@@ -48,6 +49,20 @@ class RecipeController extends Controller
 
         $recipe->save();
 
+        $instruction = new Instruction;
+
+        $instruction->instruction = request('instructionOne');
+        $instruction->recipe_id = $recipe->id;
+        $instruction->save();
+
+        $instruction->instruction = request('instructionTwo');
+        $instruction->recipe_id = $recipe->id;
+        $instruction->save();
+
+        $instruction->instruction = request('instructionThree');
+        $instruction->recipe_id = $recipe->id;
+        $instruction->save();
+        
         return redirect('/recipes');
     }
 
