@@ -42,6 +42,8 @@ class RecipeController extends Controller
 
         $recipe->pic = request('addPic');
 
+        $recipe->cooking_time = request('cookingTime');
+
         $recipe->user_id = Auth::user()->id;
 
         $recipe->save();
@@ -92,5 +94,9 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getUserRecipe(){
+
     }
 }

@@ -12,6 +12,10 @@
             <label for="addPic">addPic</label>
             <input type="text" class="form-control my-2" placeholder="Write here" name="addPic">
           </div>
+          <div class="form-group col-2">
+            <label for="cooking time">Cooking time</label>
+            <input type="text" class="form-control my-2" placeholder="Write here" name="cookingTime">
+          </div>
             <div>
           <div class="form-group col-4">
              <label for="ingredients">Ingredients</label>
