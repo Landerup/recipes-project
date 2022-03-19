@@ -16,7 +16,7 @@ class RecipeController extends Controller
      */
     public function index()
     {       
-        $recipes = Recipe::latest()->get();    
+        $recipes = Recipe::inRandomOrder()->get();    
                 return view('homepage',
             [
                 'recipes' => $recipes
@@ -67,18 +67,19 @@ class RecipeController extends Controller
         $instruction->recipe_id = $recipe->id;
         $instruction->save();
         
-        return redirect('/recipes');
+        return redirect('/profile');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Recipe $recipe)
     {
-        //
+        return view('recipe', [
+            'recipe' => $recipe
+        ]);
     }
 
     /**
@@ -116,6 +117,11 @@ class RecipeController extends Controller
     }
 
     public function getUserRecipe(){
+        $recipes = Recipe::where('user_id', Auth::user()->id)->latest()->get();    
+                return view('profile',
+            [
+                'recipes' => $recipes
+            ]);
 
     }
 }

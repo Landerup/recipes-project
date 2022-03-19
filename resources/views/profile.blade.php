@@ -16,15 +16,20 @@
             </div>
         </div>
     </div>
+        <div class="row">
+        <a class="text-center" href="/recipe/create"><button class="btn btn-primary my-3 col-3">Add recipe</button></a>
+        </div>
 </div>
 @endauth
 
 <div class="container-lg">
     <div class="row">
-        <div class="col-5 bg-primary m-3">Recipe Post</div>
-        <div class="col-5 bg-warning m-3">Recipe Post</div>
-        <div class="col-5 bg-warning m-3">Recipe Post</div>
-        <div class="col-5 bg-primary m-3">Recipe Post</div>
+        @foreach($recipes as $recipe) 
+        <div class="col-5 m-3">
+            <a href="/recipe/{{ $recipe->id }}"><h2>{{ $recipe->title }}</h2></a>
+            <p>{{ $recipe->cooking_time }}</p>
+        </div>
+        @endforeach
     </div>
 </div>
 @endsection

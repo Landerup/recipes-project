@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+<div class="row">
+  <h2 class="text-center">Add new recipe</h2>
+</div>
         <form action="{{ route('recipe.store') }}" method="post">
             @CSRF
           <div class="form-group col-4">
