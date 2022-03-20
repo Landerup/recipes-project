@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\models\Recipe;
 use App\models\Instruction;
 use App\models\Ingredient;
-use App\models\Pivotrecipeingredient;
+use App\models\Pivotingredientrecipe;
 use Auth;
 
 class RecipeController extends Controller
@@ -32,7 +32,11 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('add-recipe');
+        $ingredientTest = Ingredient::all();
+
+        return view('add-recipe', [
+            'ingredientTest' => $ingredientTest
+        ]);
     }
 
     /**
@@ -63,13 +67,10 @@ class RecipeController extends Controller
             $ingredientsArray[] = Ingredient::create([
                 'ingredient' => $ingredient_value
             ]);
+
         }
-
-
-        $recipe->ingredient()->sync([
-            $ingredients
-        ]);
-
+        $newIngredient = new Ingredient();
+        $recipe->ingredient()->attach($newIngredient->pluck('id'));
 
         return redirect('/profile');
     }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pivotrecipeingredient extends Model
+class Pivotingredientrecipe extends Model
 {
     use HasFactory;
 
-    protected $table = 'recipe_ingredient';
+    protected $table = 'ingredient_recipe';
 
     protected $fillable = [
         'recipe_id',
