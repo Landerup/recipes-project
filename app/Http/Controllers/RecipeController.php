@@ -15,8 +15,8 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       
-        $recipes = Recipe::inRandomOrder()->get();    
+    {
+        $recipes = Recipe::inRandomOrder()->get();
                 return view('homepage',
             [
                 'recipes' => $recipes
@@ -66,7 +66,7 @@ class RecipeController extends Controller
         $instruction->instruction = request('instructionThree');
         $instruction->recipe_id = $recipe->id;
         $instruction->save();
-        
+
         return redirect('/profile');
     }
 
@@ -85,24 +85,40 @@ class RecipeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Recipe $recipe)
     {
-        //
+        return view('edit-recipe', [
+            'recipe' => $recipe
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Recipe $recipe)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'addPic' => 'required',
+            'cookingTime' => 'required',
+        ]);
+
+        $recipe->title = request('title');
+
+        $recipe->pic = request('addPic');
+
+        $recipe->cooking_time = request('cookingTime');
+
+        $recipe->save();
+
+        return redirect('/profile');
+
+
     }
 
     /**
@@ -117,7 +133,7 @@ class RecipeController extends Controller
     }
 
     public function getUserRecipe(){
-        $recipes = Recipe::where('user_id', Auth::user()->id)->latest()->get();    
+        $recipes = Recipe::where('user_id', Auth::user()->id)->latest()->get();
                 return view('profile',
             [
                 'recipes' => $recipes

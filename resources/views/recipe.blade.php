@@ -8,7 +8,7 @@
         <div class="col-md-3 shadow border border-success rounded">
             <div class="">
                 <div class="card-body">
-                        <p class="text-center">{{ $recipe->user->name }}</p>
+                        <p class="text-center">{{ $recipe->user->name }} Recipe</p>
                 </div>
             </div>
         </div>

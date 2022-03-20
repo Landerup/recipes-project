@@ -10,7 +10,7 @@
 
                 <div class="card-body">
 
-                    <p class="text-center">{{ auth()->user()->name }}</p>
+                    <p class="text-center">{{ auth()->user()->name }} Profile</p>
 
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
 <div class="container-lg">
     <div class="row">
-        @foreach($recipes as $recipe) 
+        @foreach($recipes as $recipe)
         <div class="col-5 m-3">
             <a href="/recipe/{{ $recipe->id }}"><h2>{{ $recipe->title }}</h2></a>
             <p>{{ $recipe->cooking_time }}</p>
