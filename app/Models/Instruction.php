@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Instruction extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'instruction',
-        'recipe_id',
+
     ];
 
     public function instructionRecipe() {
