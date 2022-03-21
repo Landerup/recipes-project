@@ -19,10 +19,12 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::inRandomOrder()->get();
-                return view('homepage',
+        return view(
+            'homepage',
             [
                 'recipes' => $recipes
-            ]);
+            ]
+        );
     }
 
     /**
@@ -59,26 +61,19 @@ class RecipeController extends Controller
 
         $recipe->save();
 
-
-
-
         $ingredientz = $request->ingredient;
 
+        foreach ($ingredientz as $ingredient_value) {
+            $ingredient = Ingredient::firstOrCreate(
+                [
+                    'ingredient' => $ingredient_value
+                ]);
 
-        foreach($ingredientz as $ingredient_value){
-
-            $ingredientsArray[] = Ingredient::create([
-                'ingredient' => $ingredient_value
-            ]);
-
-
+                $recipeIngredients[] = $ingredient->id;
 
         }
 
-
-        //$recipe->ingredient()->attach([$recipe->id => ['ingredient_id' => 1]]);
-
-        $recipe->ingredient()->attach([$recipe->id => ['ingredient_id' => $request->ingredient]]);
+        $recipe->ingredient()->attach($recipeIngredients);
 
 
 
@@ -132,8 +127,6 @@ class RecipeController extends Controller
         $recipe->save();
 
         return redirect('/profile');
-
-
     }
 
     /**
@@ -147,12 +140,14 @@ class RecipeController extends Controller
         //
     }
 
-    public function getUserRecipe(){
+    public function getUserRecipe()
+    {
         $recipes = Recipe::where('user_id', Auth::user()->id)->latest()->get();
-                return view('profile',
+        return view(
+            'profile',
             [
                 'recipes' => $recipes
-            ]);
-
+            ]
+        );
     }
 }
