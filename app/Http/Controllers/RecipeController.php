@@ -32,7 +32,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $ingredients = Pivotingredientrecipe::all();
+        $ingredients = Ingredient::all();
 
         return view('add-recipe', [
             'ingredients' => $ingredients
@@ -75,6 +75,8 @@ class RecipeController extends Controller
 
         }
 
+
+        //$recipe->ingredient()->attach([$recipe->id => ['ingredient_id' => 1]]);
 
         $recipe->ingredient()->attach([$recipe->id => ['ingredient_id' => $request->ingredient]]);
 
