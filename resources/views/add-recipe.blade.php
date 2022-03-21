@@ -5,7 +5,7 @@
 <div class="row">
   <h2 class="text-center">Add new recipe</h2>
 </div>
-        <form action="{{ route('recipe.store') }}" method="post">
+        <form action="{{ route('recipe.store') }}" method="post" enctype="multipart/form-data">
             @CSRF
           <div class="form-group col-4">
             <label for="title">Title</label>
@@ -13,7 +13,7 @@
           </div>
           <div class="form-group col-4">
             <label for="addPic">addPic</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="addPic" value="{{ old('addPic') }}">
+            <input type="file" class="form-control my-2" placeholder="Choose file" name="addPic" value="{{ old('addPic') }}">
           </div>
           <div class="form-group col-2">
             <label for="cooking time">Cooking time (minutes)</label>

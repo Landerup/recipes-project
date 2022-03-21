@@ -56,7 +56,8 @@
             </div>
         </div>
 
-        <div class="col-7 mx-3">Picture
+        <div class="col-7 mx-3">
+            <img src='{{ asset("customLink/$recipe->pic") }}' alt="Bild på receptet" style="height: 300px; width: 300px">
             <div class="col my-3">Rating</div>
         </div>
     </div>

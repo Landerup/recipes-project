@@ -28,3 +28,8 @@ Route::middleware('auth')->group(function() {
 });
 
 Route::put('/recipe/{id}', [App\Http\Controllers\RecipeController::class, 'update'])->name('update');
+
+
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
