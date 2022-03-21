@@ -29,14 +29,15 @@
                 <div class="col my-3">Title : {{ $recipe->title }}</div>
             </div>
             <div class="row">
-                <div class="col my-3">Cooking time : {{ $recipe->cooking_time}}</div>
+                <div class="col my-3">Cooking time : {{ $recipe->cooking_time}} minutes</div>
             </div>
             <div class="row">
                 <div class="col my-3">Ingredients
                     <div class="my-2">
                         <ul>
-                            <li>Banana</li>
-                            <li>Äpple</li>
+                        @foreach($recipe->ingredient as $ingredient)
+                            <li>{{ $ingredient->ingredient }}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

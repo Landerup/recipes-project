@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\models\Recipe;
 use App\models\Instruction;
 use App\models\Ingredient;
-use App\models\Pivotingredientrecipe;
 use Auth;
 
 class RecipeController extends Controller
@@ -18,7 +17,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::inRandomOrder()->get();
+        $recipes = Recipe::inRandomOrder()->limit(10)->get();
         return view(
             'homepage',
             [
@@ -34,10 +33,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $ingredients = Ingredient::all();
-
         return view('add-recipe', [
-            'ingredients' => $ingredients
         ]);
     }
 
@@ -49,6 +45,12 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'addPic' => 'required',
+            'cookingTime' => 'required|integer',
+        ]);
+
         $recipe = new Recipe;
 
         $recipe->title = request('title');
@@ -87,8 +89,10 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
+
         return view('recipe', [
-            'recipe' => $recipe
+            'recipe' => $recipe,
+
         ]);
     }
 
