@@ -22,9 +22,9 @@
             <div>
           <div class="form-group col-4">
              <label for="ingredients">Ingredients</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" multiple="multiple">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" multiple="multiple">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" multiple="multiple">
           </div>
           <div>
           <div class="form-group col-4">

@@ -32,10 +32,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $ingredientTest = Ingredient::all();
+        $ingredients = Pivotingredientrecipe::all();
 
         return view('add-recipe', [
-            'ingredientTest' => $ingredientTest
+            'ingredients' => $ingredients
         ]);
     }
 
@@ -59,18 +59,26 @@ class RecipeController extends Controller
 
         $recipe->save();
 
-        $ingredients = $request->ingredient;
 
 
-        foreach($ingredients as $ingredient_value){
+
+        $ingredientz = $request->ingredient;
+
+
+        foreach($ingredientz as $ingredient_value){
 
             $ingredientsArray[] = Ingredient::create([
                 'ingredient' => $ingredient_value
             ]);
 
+
+
         }
-        $newIngredient = new Ingredient();
-        $recipe->ingredient()->attach($newIngredient->pluck('id'));
+
+
+        $recipe->ingredient()->attach([$recipe->id => ['ingredient_id' => $request->ingredient]]);
+
+
 
         return redirect('/profile');
     }
