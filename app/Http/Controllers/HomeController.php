@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::inRandomOrder()->get();    
+        $recipes = Recipe::inRandomOrder()->take(10)->get();
         return view('homepage',
     [
         'recipes' => $recipes

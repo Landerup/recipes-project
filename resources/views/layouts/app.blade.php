@@ -26,6 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset("customLink/marmusminlogo.png") }}" alt="" style="width:75px; height:50px;">
                     {{ config('app.name', 'MarMusMin') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -34,7 +35,7 @@
 
                 <div class="input-group rounded my-3">
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-success">
                         <i class="bi bi-search"></i>
                     </button>
                 </div>

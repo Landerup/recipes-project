@@ -8,7 +8,8 @@
         <div class="col-md-3 shadow border border-success rounded">
             <div class="">
                 <div class="card-body">
-                        <p class="text-center">{{ $recipe->user->name }} Recipe</p>
+                        <p class="text-center text-success fs-3">
+                        {{ $recipe->user->name }} Recipe</p>
                 </div>
             </div>
         </div>
@@ -16,25 +17,32 @@
 @auth
     @if ($recipe->user->name == auth()->user()->name)
     <div class="row">
-        <a class="text-center" href="/recipe/{{ $recipe->id }}/edit"><button class="btn btn-primary my-3 col-3">Edit</button></a>
+        <a class="text-center" href="/recipe/{{ $recipe->id }}/edit"><button class="btn btn-success my-3 col-3">Edit</button></a>
     </div>
     @endif
 @endauth
 </div>
 
 <div class="container my-4">
-    <div class="row justify-content-center">
-        <div class="col-4 mx-3">
+    <div class="row justify-content-center text-center">
+        <div class="col-4 mx-3 text-start">
             <div class="row">
-                <div class="col my-3">Title : {{ $recipe->title }}</div>
+                <div class="col my-3">
+                    <h3 class="text-success fw-bold">Title</h3>
+                    <p class="text-capitalize fs-3">{{ $recipe->title }}</p>
+                </div>
             </div>
             <div class="row">
-                <div class="col my-3">Cooking time : {{ $recipe->cooking_time}} minutes</div>
+                <div class="col my-3">
+                <h3 class="text-success fw-bold">Cooking Time</h3>
+                    <p class="fs-4">{{ $recipe->cooking_time}} minutes</p>
+                </div>
             </div>
             <div class="row">
-                <div class="col my-3">Ingredients
+                <div class="col my-3">
+                <h3 class="text-success fw-bold">Ingredients</h3>
                     <div class="my-2">
-                        <ul>
+                        <ul class="text-capitalize" style="list-style-position: inside; ">
                         @foreach($recipe->ingredient as $ingredient)
                             <li>{{ $ingredient->ingredient }}</li>
                             @endforeach
@@ -42,10 +50,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col my-3">Instructions
+
+        </div>
+
+        <div class="col-2 mx-3 text-start">
+            <img src='{{ asset("customLink/$recipe->pic") }}' alt="Bild på receptet" style="height: 250px; width: 300px">
+            <div class="row ">
+                <div class="col my-3 text-start">
+                <h3 class="text-success fw-bold">Instructions</h3>
                     <div class="my-2">
-                        <ol>
+                        <ol class="text-capitalize" style="list-style-position: inside;">
                             <li>Test</li>
                             <li>Hej</li>
                             <li></li>
@@ -54,11 +68,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-7 mx-3">
-            <img src='{{ asset("customLink/$recipe->pic") }}' alt="Bild på receptet" style="height: 300px; width: 300px">
-            <div class="col my-3">Rating</div>
         </div>
     </div>
 </div>

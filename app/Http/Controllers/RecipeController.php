@@ -17,7 +17,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::inRandomOrder()->limit(10)->get();
+        $recipes = Recipe::inRandomOrder()->take(10)->get();
         return view(
             'homepage',
             [
@@ -71,10 +71,6 @@ class RecipeController extends Controller
             $recipe->pic = date('YmdHi').$fileName;
             $recipe->save();
         }
-
-
-
-
 
 
         $ingredientz = $request->ingredient;
@@ -132,17 +128,24 @@ class RecipeController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'addPic' => 'required',
             'cookingTime' => 'required',
+            'addPic' => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
         ]);
 
         $recipe->title = request('title');
 
-        $recipe->pic = request('addPic');
-
         $recipe->cooking_time = request('cookingTime');
 
-        $recipe->save();
+        if(!($request->file('addPic'))){
+            $recipe->pic = $recipe->pic;
+            $recipe->save();
+        } else{
+            $fileName = $request->file('addPic')->getClientOriginalName();
+            $request->file('addPic')->move(public_path('customLink'),date('YmdHi').$fileName);
+
+            $recipe->pic = date('YmdHi').$fileName;
+            $recipe->save();
+        }
 
         return redirect('/profile');
     }
