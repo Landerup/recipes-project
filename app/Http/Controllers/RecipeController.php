@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\models\Recipe;
 use App\models\Instruction;
 use App\models\Ingredient;
+use App\models\Category;
 use Auth;
 
 class RecipeController extends Controller
@@ -88,6 +89,20 @@ class RecipeController extends Controller
         $recipe->ingredient()->attach($recipeIngredients);
 
 
+        $categories = $request->category;
+
+        foreach ($categories as $category_value) {
+            $category = Category::firstOrCreate(
+                [
+                    'category_name' => $category_value
+                ]);
+
+                $recipeCategory[] = $category->id;
+
+        }
+
+        $recipe->category()->attach($recipeCategory);
+
 
         return redirect('/profile');
     }
@@ -158,7 +173,9 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+        return redirect('/profile');
     }
 
     public function getUserRecipe()

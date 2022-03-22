@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'category_name',
+    ];
+
+    public function categoryRecipe(){
+        return $this->belongsToMany(Recipe::class);
+    }
 }

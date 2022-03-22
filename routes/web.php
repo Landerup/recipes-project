@@ -24,7 +24,6 @@ Route::resource('/recipe', App\Http\Controllers\RecipeController::class);
 Route::middleware('auth')->group(function() {
     Route::get('/recipe/create', [App\Http\Controllers\RecipeController::class, 'create'])->name('create');
     Route::get('/recipe/edit', [App\Http\Controllers\RecipeController::class, 'edit'])->name('edit');
-
 });
 
 Route::put('/recipe/{id}', [App\Http\Controllers\RecipeController::class, 'update'])->name('update');

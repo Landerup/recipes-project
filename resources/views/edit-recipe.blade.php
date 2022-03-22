@@ -44,9 +44,9 @@
 
           <div class="form-group col-4">
              <label for="instructions">Categories</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="categories[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="categories[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="categories[]">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
             <button class="bg-success" id="addCategory">+</button>
             <button class="bg-danger" id="removeCategory">-</button>
           </div>
@@ -67,6 +67,7 @@
 
           <button type="submit" class="btn btn-success my-3">Submit</button>
         </form>
+
       </div>
 
 

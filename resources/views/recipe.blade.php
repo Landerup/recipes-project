@@ -50,6 +50,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col my-3">
+                <h3 class="text-success fw-bold">Categories</h3>
+                    <div class="my-2">
+                        <ul class="text-capitalize" style="list-style-position: inside; ">
+                        @foreach($recipe->category as $category)
+                            <a href="#" class="text-decoration-none text-success">
+                                <p>#{{ $category->category_name }}</p>
+                            </a>
+                        @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
