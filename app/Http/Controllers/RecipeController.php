@@ -66,7 +66,7 @@ class RecipeController extends Controller
             $recipe->save();
         } else{
             $fileName = $request->file('addPic')->getClientOriginalName();
-            $request->file('addPic')->move(storage_path('app/public/images'),date('YmdHi').$fileName);
+            $request->file('addPic')->move(public_path('customLink'),date('YmdHi').$fileName);
 
             $recipe->pic = date('YmdHi').$fileName;
             $recipe->save();
