@@ -47,7 +47,6 @@ class RecipeController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'addPic' => 'required',
             'cookingTime' => 'required|integer',
             'addPic' => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
         ]);
@@ -60,13 +59,22 @@ class RecipeController extends Controller
 
         $recipe->user_id = Auth::user()->id;
 
-        $fileName = $request->file('addPic')->getClientOriginalName();
 
-        $request->file('addPic')->move(storage_path('app/public/images'),date('YmdHi').$fileName);
 
-        $recipe->pic = date('YmdHi').$fileName;
+        if(!($request->file('addPic'))){
+            $recipe->pic = 'nopic.jpg';
+            $recipe->save();
+        } else{
+            $fileName = $request->file('addPic')->getClientOriginalName();
+            $request->file('addPic')->move(storage_path('app/public/images'),date('YmdHi').$fileName);
 
-        $recipe->save();
+            $recipe->pic = date('YmdHi').$fileName;
+            $recipe->save();
+        }
+
+
+
+
 
 
         $ingredientz = $request->ingredient;
