@@ -21,34 +21,40 @@
             <input type="text" class="form-control my-2" placeholder="Write here" name="cookingTime" value="{{ old('cookingTime') }}">
           </div>
             </div>
+            <div class="container">
             <div class="row">
-          <div class="form-group col-4">
+          <div class="form-group col-3" id="ingredientDiv">
              <label for="ingredients">Ingredients</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.0') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.1') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.2') }}">
-            <button class="bg-success" id="addIngredient">+</button>
-            <button class="bg-danger" id="removeIngredient">-</button>
+             <button type="button" class="bg-success" id="addIngredient">+</button>
+            <button type="button" class="bg-danger" id="removeIngredient">-</button>
+            <input type="text" id="test" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.0') }}">
+            <input type="text" id="test" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.1') }}">
+            <input type="text" id="test" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.2') }}">
           </div>
 
-          <div class="form-group col-4">
+
+
+
+          <div class="form-group col-3">
              <label for="instructions">Instructions</label>
+             <button type="button" class="bg-success" id="addInstruction">+</button>
+            <button type="button" class="bg-danger" id="removeInstruction">-</button>
             <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.0') }}">
             <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.1') }}">
             <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.2') }}">
-            <button class="bg-success" id="addInstruction">+</button>
-            <button class="bg-danger" id="removeInstruction">-</button>
+
           </div>
 
-          <div class="form-group col-4">
+          <div class="form-group col-3">
              <label for="instructions">Categories</label>
+             <button type="button" class="bg-success" id="addCategory">+</button>
+            <button type="button" class="bg-danger" id="removeCategory">-</button>
             <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.0') }}">
             <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.1') }}">
             <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.2') }}">
-            <button class="bg-success" id="addCategory">+</button>
-            <button class="bg-danger" id="removeCategory">-</button>
-          </div>
 
+          </div>
+          </div>
           </div>
 
           @if ($errors->any())

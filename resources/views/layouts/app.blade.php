@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/addeditinputs.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -62,9 +63,10 @@
                                 </li>
                             @endif
                         @else
+                            <a href="/profile"><button>{{ Auth::user()->name }}</button></a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="dropdown-item" href="/profile" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+
                                 </a>
 
                                 <div>

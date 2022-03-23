@@ -50,7 +50,7 @@ class RecipeController extends Controller
             'title' => 'required',
             'cookingTime' => 'required|integer',
             'addPic' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'instruction' => 'required|array',
+            'instruction' => 'required',
             'instruction.*' => 'required',
             'ingredient' => 'required|array',
             'ingredient.*' => 'required',
@@ -79,19 +79,16 @@ class RecipeController extends Controller
         }
 
 
-        $ingredientz = $request->ingredient;
-
-        foreach ($ingredientz as $ingredient_value) {
+        foreach ($request->ingredient as $ingredient_value) {
             $ingredient = Ingredient::firstOrCreate(
                 [
                     'ingredient' => $ingredient_value
                 ]);
 
-                $recipeIngredients[] = $ingredient->id;
-
+                $recipe->ingredient()->attach($ingredient->id);
         }
 
-        $recipe->ingredient()->attach($recipeIngredients);
+
 
 
         $categories = $request->category;
@@ -175,6 +172,8 @@ class RecipeController extends Controller
             $recipe->pic = date('YmdHi').$fileName;
             $recipe->save();
         }
+
+
 
         return redirect('/profile');
     }
