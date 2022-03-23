@@ -11,6 +11,11 @@ class Instruction extends Model
 
     protected $fillable = [
         'instruction',
+        'recipe_id'
+    ];
+
+    protected $casts = [
+        'instruction' => 'array'
 
     ];
 

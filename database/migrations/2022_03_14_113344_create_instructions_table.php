@@ -16,7 +16,8 @@ class CreateInstructionsTable extends Migration
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('instruction');
+            $table->json('instruction');
+            $table->foreignId('recipe_id')->references('id')->on('recipes');
         });
     }
 

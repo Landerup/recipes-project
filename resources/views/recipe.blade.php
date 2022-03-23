@@ -56,7 +56,7 @@
                     <div class="my-2">
                         <ul class="text-capitalize" style="list-style-position: inside; ">
                         @foreach($recipe->category as $category)
-                            <a href="#" class="text-decoration-none text-success">
+                            <a href="/category/{{ $category->category_name }}" class="text-decoration-none text-success">
                                 <p>#{{ $category->category_name }}</p>
                             </a>
                         @endforeach
@@ -64,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="col-2 mx-3 text-start">
@@ -74,10 +73,11 @@
                 <h3 class="text-success fw-bold">Instructions</h3>
                     <div class="my-2">
                         <ol class="text-capitalize" style="list-style-position: inside;">
-                            <li>Test</li>
-                            <li>Hej</li>
-                            <li></li>
-                            <li></li>
+                        @foreach($instructions as $instructionArray)
+                            @foreach($instructionArray->instruction as $text)
+                            <li>{{$text}}</li>
+                             @endforeach
+                            @endforeach
                         </ol>
                     </div>
                 </div>

@@ -24,27 +24,27 @@
             <div class="row">
           <div class="form-group col-4">
              <label for="ingredients">Ingredients</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient[]') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient[]') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient[]') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.0') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.1') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="ingredient[]" value="{{ old('ingredient.2') }}">
             <button class="bg-success" id="addIngredient">+</button>
             <button class="bg-danger" id="removeIngredient">-</button>
           </div>
 
           <div class="form-group col-4">
              <label for="instructions">Instructions</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.0') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.1') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="instruction[]" value="{{ old('instruction.2') }}">
             <button class="bg-success" id="addInstruction">+</button>
             <button class="bg-danger" id="removeInstruction">-</button>
           </div>
 
           <div class="form-group col-4">
              <label for="instructions">Categories</label>
-            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
-            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category[]') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.0') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.1') }}">
+            <input type="text" class="form-control my-2" placeholder="Write here" name="category[]" value="{{ old('category.2') }}">
             <button class="bg-success" id="addCategory">+</button>
             <button class="bg-danger" id="removeCategory">-</button>
           </div>

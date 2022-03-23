@@ -49,7 +49,14 @@ class RecipeController extends Controller
         $request->validate([
             'title' => 'required',
             'cookingTime' => 'required|integer',
-            'addPic' => 'nullable|image|mimes:jpg,png,jpeg|max:2048'
+            'addPic' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'instruction' => 'required|array',
+            'instruction.*' => 'required',
+            'ingredient' => 'required|array',
+            'ingredient.*' => 'required',
+            'category' => 'required|array',
+            'category.*' => 'required'
+
         ]);
 
         $recipe = new Recipe;
@@ -59,8 +66,6 @@ class RecipeController extends Controller
         $recipe->cooking_time = request('cookingTime');
 
         $recipe->user_id = Auth::user()->id;
-
-
 
         if(!($request->file('addPic'))){
             $recipe->pic = 'nopic.jpg';
@@ -103,6 +108,14 @@ class RecipeController extends Controller
 
         $recipe->category()->attach($recipeCategory);
 
+        $instruction = new Instruction;
+
+        $instruction->recipe_id = $recipe->id;
+
+        $instruction->instruction = request('instruction');
+
+
+        $instruction->save();
 
         return redirect('/profile');
     }
@@ -112,12 +125,13 @@ class RecipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe, Instruction $instructions)
     {
+        $instructions = Instruction::where('recipe_id', $recipe->id)->get();
 
         return view('recipe', [
             'recipe' => $recipe,
-
+            'instructions' => $instructions
         ]);
     }
 
