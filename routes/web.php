@@ -28,4 +28,6 @@ Route::middleware('auth')->group(function() {
 
 Route::put('/recipe/{id}', [App\Http\Controllers\RecipeController::class, 'update'])->name('update');
 
-Route::get('/category/{category_name}', [App\Http\Controllers\CategoryController::class, 'getCategoryList'])->name('category');
+Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('Category');
+
+Route::get('/category/{category_name}', [App\Http\Controllers\CategoryController::class, 'show'])->name('showCategory');

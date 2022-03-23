@@ -9,17 +9,23 @@ use Auth;
 
 class CategoryController extends Controller
 {
-    public function getCategoryList(Category $category, Recipe $recipes){
+    public function index(){
 
-        $recipes = Recipe::get();
+        $categories = Category::orderBy('category_name')->get();
 
-        $category = Category::all();
+        return view('category',
+            [
+                'categories' => $categories
+            ]
+        );
+    }
 
-        $category->categoryRecipe()->withPivot('category_id');
+    public function show($category){
 
-        return view('category',[
-            'category' => $category,
-            'recipes' => $recipes
+        $category = Category::where('category_name', $category)->get();
+
+        return view('show-category',[
+            'category' => $category
         ]);
     }
 }

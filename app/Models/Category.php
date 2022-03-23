@@ -13,7 +13,7 @@ class Category extends Model
         'category_name',
     ];
 
-    public function categoryRecipe(){
+    public function recipe(){
         return $this->belongsToMany(Recipe::class);
     }
 }

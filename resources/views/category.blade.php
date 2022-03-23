@@ -4,19 +4,18 @@
 
 <div class="container-lg">
     <div class="">
-        <h2 class="text-center text-success">Category {{ $category }}</h2>
+        <h2 class="text-center text-success">All categories</h2>
     </div>
-    <div class="row justify-content-center">
-        @foreach($recipes as $recipe)
-        <div class="col-5 m-3 text-center">
-            <a href="/recipe/{{ $recipe->id }}">
-                <img src='{{ asset("customLink/$recipe->pic") }}' alt="Bild på receptet" style="height: 150px; width: 150px">
+    <div class="row justify-content-center text-center">
+        @foreach($categories as $category)
+
+            <ul class="text-capitalize" style="list-style-position: inside;">
+           <li> <a href="/category/{{ $category->category_name }}" class="text-center text-success">
+            {{ $category->category_name }}
              </a>
-            <a class="text-decoration-none" href="/recipe/{{ $recipe->id }}">
-                <h4 class="text-success text-capitalize">{{ $recipe->title }}</h4>
-            </a>
-            <p>{{ $recipe->cooking_time }} minutes</p>
-        </div>
+             </li>
+             </ul>
+
         @endforeach
     </div>
 </div>
